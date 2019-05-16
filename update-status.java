@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //
+    //get stati
     public void statustexts()
     {
         ListView k1 = findViewById(R.id.popsicle);
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         }
         catch(Exception e)
         {
-            Toast.makeText(this, "Chetta Nayala", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Exception: "+ e, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -155,28 +155,5 @@ public class MainActivity extends AppCompatActivity {
                         MY_PERMISSIONS_REQUEST_SEND_SMS);
             }
         }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
-        String phoneNo = "9908734345";
-        EditText msg = findViewById(R.id.editText2);
-        String message = msg.getText().toString();
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_SEND_SMS: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    SmsManager smsManager = SmsManager.getDefault();
-                    smsManager.sendTextMessage(phoneNo, null, message, null, null);
-                    Toast.makeText(getApplicationContext(), "SMS sent.",
-                            Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(),
-                            "SMS faild, please try again.", Toast.LENGTH_LONG).show();
-                    return;
-                }
-            }
-        }
-
     }
 }
